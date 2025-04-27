@@ -56,14 +56,15 @@ const { data, error } = await useFetch<RecipeResponse>("https://dummyjson.com/re
               </div>
               <div class="flex items-center gap-1">
                 <Icon name="mdi:star" style="color: #f79f1a" />
-                <span>{{ recipe.rating }}</span>
+                <span>{{ recipe.rating }} ({{ recipe.reviewCount }})</span>
               </div>
             </div>
-            <button
+            <NuxtLink
+              :to="`/recipes/${recipe.id}`"
               class="px-4 py-2 text-white self-start bg-dodgeroll-gold rounded-md text-base lg:text-lg cursor-pointer"
             >
               View
-            </button>
+            </NuxtLink>
           </div>
         </div>
       </div>
