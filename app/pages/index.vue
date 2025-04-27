@@ -1,4 +1,9 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+const { data, error } = await useAsyncData('recipes', () =>
+  $fetch('https://dummyjson.com/recipes?limit=12')
+);
+
+</script>
 
 <template>
   <main>
