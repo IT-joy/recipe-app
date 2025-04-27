@@ -2,7 +2,7 @@
 
 <template>
   <div>
-    <h1>Default Layouts</h1>
+    <BaseNavigation />
     <slot />
   </div>
 </template>
