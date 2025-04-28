@@ -1,5 +1,7 @@
 name: Deploy
-on: [push]
+on:
+  push:
+    branches: [master]  # ← Явно указываем master
 jobs:
   deploy:
     runs-on: ubuntu-latest
