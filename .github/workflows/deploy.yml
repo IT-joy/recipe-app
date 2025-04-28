@@ -1,14 +1,31 @@
 name: Deploy
 on:
   push:
-    branches: [master]  # ← Явно указываем master
+    branches: [master]
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v4
-      - run: npm install && npm run generate
-      - uses: peaceiris/actions-gh-pages@v3
+        with:
+          fetch-depth: 0
+          
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          
+      - name: Install and build
+        run: |
+          npm install
+          npm run generate
+          
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist
+          publish_branch: gh-pages  # Явно указываем ветку
