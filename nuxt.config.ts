@@ -1,5 +1,15 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  ssr: false,
+
+  nitro: {
+    preset: 'static'
+  },
+
+  app: {
+    baseURL: '/recipe-app/'
+  },
+
   compatibilityDate: '2024-11-01',
 
   future: {
@@ -43,4 +53,11 @@ export default defineNuxtConfig({
       Montserrat: true,
     },
   },
+
+  postcss: {
+    plugins: {
+      tailwindcss: {},
+      autoprefixer: {},
+    }
+  }
 })
